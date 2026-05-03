@@ -205,7 +205,7 @@
 
       <!-- ═══ IMAGE ═══ -->
       @if (widget.type === 'IMAGE') {
-      <div class="widget-card widget-link" (click)="openLink(widget)">
+      <div class="widget-card-medium widget-link" (click)="openLink(widget)">
         <div class="widget-card-header">
           <div class="widget-type-icon image-icon">
             <span class="material-symbols-outlined">image</span>
@@ -214,7 +214,8 @@
             style="background: rgba(202, 152, 255, 0.1); color: var(--primary-container);">Imagen</span>
         </div>
         <div class="widget-card-content">
-          <span class="widget-link-url">{{ getDisplayContent(widget) }}</span>
+          <img src="{{getDisplayContent(widget)}}" alt="{{getDisplayContent(widget)}}" style="width: 100%;"
+            onerror="this.src='assets/image/fallback.png'; this.onerror=null;">
         </div>
         <div class="widget-card-footer">
           <span class="widget-timer-badge">
@@ -261,8 +262,7 @@
           <div class="widget-type-icon key-icon">
             <span class="material-symbols-outlined">key</span>
           </div>
-          <span class="widget-type-badge"
-            style="background: rgba(255, 215, 0, 0.1); color: #ffd700;">Key</span>
+          <span class="widget-type-badge" style="background: rgba(255, 215, 0, 0.1); color: #ffd700;">Key</span>
         </div>
         <div class="widget-card-content">
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
