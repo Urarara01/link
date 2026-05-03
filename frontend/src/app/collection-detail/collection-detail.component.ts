@@ -21,6 +21,9 @@ export class CollectionDetailComponent implements OnInit {
   showToast = false;
   toastMessage = '';
 
+  // Track visibility for KEY widgets
+  visibleKeys: { [key: number]: boolean } = {};
+
   widgetTypes = [
     { value: 'LINK', label: '🔗 Link' },
     { value: 'SIMPLE_TEXT', label: '📝 Texto Simple' },
@@ -115,6 +118,11 @@ export class CollectionDetailComponent implements OnInit {
     }).catch(err => {
       console.error('Clipboard copy failed', err);
     });
+  }
+
+  /** Toggle visibility for a KEY widget */
+  toggleKeyVisibility(widgetId: number) {
+    this.visibleKeys[widgetId] = !this.visibleKeys[widgetId];
   }
 
   /** Dynamic content label based on widget type */

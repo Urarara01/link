@@ -40,8 +40,13 @@
 
       <div class="form-group">
         <label>{{ getContentLabel() }}</label>
+        @if (newWidgetType === 'KEY') {
+        <input type="password" class="input-field" [placeholder]="getContentPlaceholder()"
+          [(ngModel)]="newWidgetContent">
+        } @else {
         <textarea class="input-field" [placeholder]="getContentPlaceholder()" rows="3"
           [(ngModel)]="newWidgetContent"></textarea>
+        }
       </div>
 
       <button class="btn-primary" style="width: 100%;" (click)="createWidget()">
@@ -257,10 +262,20 @@
             <span class="material-symbols-outlined">key</span>
           </div>
           <span class="widget-type-badge"
-            style="background: rgba(244, 119, 136, 0.1); color: var(--tertiary-dim);">Key</span>
+            style="background: rgba(255, 215, 0, 0.1); color: #ffd700;">Key</span>
         </div>
         <div class="widget-card-content">
-          <p class="widget-text-content">{{ getDisplayContent(widget) }}</p>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+            <p class="widget-text-content" style="font-family: monospace; flex: 1;">
+              {{ visibleKeys[widget.id] ? getDisplayContent(widget) : '••••••••••••' }}
+            </p>
+            <button class="btn-icon" style="width: 2rem; height: 2rem; border: none; flex-shrink: 0;"
+              (click)="toggleKeyVisibility(widget.id)">
+              <span class="material-symbols-outlined" style="font-size: 1rem;">
+                {{ visibleKeys[widget.id] ? 'visibility_off' : 'visibility' }}
+              </span>
+            </button>
+          </div>
         </div>
         <div class="widget-card-footer">
           <span class="widget-timer-badge">

@@ -458,6 +458,10 @@ select.input-field {
   background: rgba(244, 119, 136, 0.1);
   color: var(--tertiary-dim);
 }
+.widget-type-icon.key-icon {
+  background: rgba(255, 215, 0, 0.1);
+  color: #ffd700;
+}
 
 .widget-type-badge {
   font-size: 0.625rem;
