@@ -8,5 +8,6 @@ public enum WidgetType {
     VIDEO,
     IMAGE,
     TASK_LIST,
-    KEY
+    KEY,
+    CARD
 }

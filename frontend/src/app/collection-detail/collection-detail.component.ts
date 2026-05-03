@@ -32,6 +32,7 @@ export class CollectionDetailComponent implements OnInit {
     { value: 'VIDEO', label: '🎬 Video' },
     { value: 'IMAGE', label: '🖼️ Imagen' },
     { value: 'TASK_LIST', label: '✅ Lista de Tareas' },
+    { value: 'CARD', label: '🗂️ Tarjeta' },
     { value: 'KEY', label: '🔑 Key' },
   ];
 
@@ -136,6 +137,7 @@ export class CollectionDetailComponent implements OnInit {
       case 'QUICK_NOTE': return 'Nota';
       case 'TASK_LIST': return 'Tareas';
       case 'KEY': return 'Key';
+      case 'CARD': return 'Card';
       default: return 'Contenido';
     }
   }
@@ -151,6 +153,7 @@ export class CollectionDetailComponent implements OnInit {
       case 'QUICK_NOTE': return 'Escribe tu nota rápida...';
       case 'TASK_LIST': return 'Tarea 1, Tarea 2, Tarea 3...';
       case 'KEY': return 'Escribe tu key aquí...';
+      case 'CARD': return 'Escribe el contenido de tu tarjeta aquí...';
       default: return 'Contenido del widget...';
     }
   }

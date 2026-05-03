@@ -290,6 +290,32 @@
       </div>
       }
 
+      @if (widget.type === 'CARD') {
+      <div class="widget-card">
+        <div class="widget-card-header">
+          <div class="widget-type-icon card-icon">
+            <span class="material-symbols-outlined">article</span>
+          </div>
+          <span class="widget-type-badge" style="background: rgba(100, 149, 237, 0.1); color: #6495ED;">Tarjeta</span>
+        </div>
+        <div class="widget-card-content">
+          <div class="card-content-box">
+            {{ getDisplayContent(widget) }}
+          </div>
+        </div>
+        <div class="widget-card-footer">
+          <span class="widget-timer-badge">
+            <span class="material-symbols-outlined" style="font-size: 0.875rem;">timer</span>
+            {{ widget.timerType }}
+          </span>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none;"
+            (click)="copyToClipboard(widget); $event.stopPropagation()">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">content_copy</span>
+          </button>
+        </div>
+      </div>
+      }
+
       } @empty {
       <!-- Opcional: Esto reemplaza al primer @if de widgets.length === 0 si prefieres manejarlo aquí -->
       }
