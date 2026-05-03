@@ -8,5 +8,7 @@ fetch('http://localhost:8080/api/widgets', {
         content: { data: 'test' }
     })
 }).then(res => res.json())
-  .then(console.log)
-  .catch(console.error);
+    .then(console.log)
+    .catch(console.error);
+
+let texto_prueba = "Holaaa Yanpol"
