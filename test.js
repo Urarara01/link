@@ -11,4 +11,4 @@ fetch('http://localhost:8080/api/widgets', {
     .then(console.log)
     .catch(console.error);
 
-let texto_prueba = "Holaaa Yanpol"
+let texto_prueba = "mondongo"
