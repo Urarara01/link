@@ -1,0 +1,293 @@
+<!-- Page Header -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a routerLink="/" style="color: var(--primary); cursor: pointer;">Workspace</a>
+    <span class="material-symbols-outlined">chevron_right</span>
+    <span>Colección #{{ collectionId }}</span>
+  </div>
+  <h2>Widgets</h2>
+  <p>Click en un widget para abrirlo.</p>
+</div>
+
+<!-- Two-column layout -->
+<div class="detail-layout">
+  <!-- Left: Add Widget Form -->
+  <div>
+    <div class="form-section" style="position: sticky; top: 2rem;">
+      <h3>
+        <span class="material-symbols-outlined"
+          style="font-size: 1.125rem; vertical-align: middle; margin-right: 0.5rem; color: var(--primary);">widgets</span>
+        Nuevo Widget
+      </h3>
+
+      <div class="form-group">
+        <label>Tipo de Widget</label>
+        <select class="input-field" [(ngModel)]="newWidgetType">
+          @for (type of widgetTypes; track type.value) {
+          <option [value]="type.value">{{ type.label }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Timer</label>
+        <select class="input-field" [(ngModel)]="newWidgetTimer">
+          @for (timer of timerTypes; track timer.value) {
+          <option [value]="timer.value">{{ timer.label }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>{{ getContentLabel() }}</label>
+        <textarea class="input-field" [placeholder]="getContentPlaceholder()" rows="3"
+          [(ngModel)]="newWidgetContent"></textarea>
+      </div>
+
+      <button class="btn-primary" style="width: 100%;" (click)="createWidget()">
+        <span class="material-symbols-outlined" style="font-size: 1rem;">add</span>
+        Agregar Widget
+      </button>
+    </div>
+  </div>
+
+  <!-- Right: Widget Grid -->
+  <div>
+    @if (widgets.length === 0) {
+    <div class="empty-state">
+      <span class="material-symbols-outlined">widgets</span>
+      <p>Esta colección está vacía. Agrega un widget para empezar.</p>
+    </div>
+    }
+
+    @if (widgets.length > 0) {
+    <div class="widget-grid">
+      @for (widget of widgets; track widget.id) {
+
+      <!-- ═══ LINK ═══ -->
+      @if (widget.type === 'LINK') {
+      <div class="widget-card widget-link" (click)="openLink(widget)">
+        <div class="widget-card-header">
+          <div class="widget-type-icon link-icon">
+            <span class="material-symbols-outlined">link</span>
+          </div>
+          <span class="widget-type-badge">Link</span>
+        </div>
+        <div class="widget-card-content">
+          <span class="widget-link-url">{{ getDisplayContent(widget) }}</span>
+          <span class="widget-link-domain">{{ getDomain(widget) }}</span>
+        </div>
+        <div class="widget-card-footer">
+          <span class="widget-timer-badge">
+            <span class="material-symbols-outlined" style="font-size: 0.875rem;">timer</span>
+            {{ widget.timerType }}
+          </span>
+          <span class="widget-link-action">
+            <i class="fas fa-clone" (click)="copyToClipboard(widget); $event.stopPropagation()"></i>
+            <span class="tooltip-text">Copiar</span>
+          </span>
+        </div>
+      </div>
+      }
+
+      <!-- ═══ NUMBER ═══ -->
+      @if (widget.type === 'NUMBER') {
+      <div class="widget-card widget-number" (click)="copyToClipboard(widget)">
+        <div class="widget-card-header">
+          <div class="widget-type-icon number-icon">
+            <span class="material-symbols-outlined">tag</span>
+          </div>
+          <span class="widget-type-badge"
+            style="background: rgba(174, 138, 248, 0.1); color: var(--secondary-dim);">Número</span>
+        </div>
+        <div class="widget-card-content">
+          <p class="widget-number-label">Valor</p>
+          <p class="widget-number-value">{{ getDisplayContent(widget) }}</p>
+        </div>
+        <div class="widget-card-footer">
+          <span class="widget-timer-badge">
+            <span class="material-symbols-outlined" style="font-size: 0.875rem;">timer</span>
+            {{ widget.timerType }}
+          </span>
+          @if (widget.isActive) {
+          <span class="widget-active-dot"></span>
+          }
+        </div>
+        <div class="widget-copy-overlay">
+          <span>Click para copiar</span>
+        </div>
+      </div>
+      }
+
+      <!-- ═══ SIMPLE_TEXT ═══ -->
+      @if (widget.type === 'SIMPLE_TEXT') {
+      <div class="widget-card">
+        <div class="widget-card-header">
+          <div class="widget-type-icon text-icon">
+            <span class="material-symbols-outlined">text_fields</span>
+          </div>
+          <span class="widget-type-badge"
+            style="background: rgba(179, 144, 254, 0.1); color: var(--secondary);">Texto</span>
+        </div>
+        <div class="widget-card-content">
+          <p class="widget-text-content">{{ getDisplayContent(widget) }}</p>
+        </div>
+        <div class="widget-card-footer">
+          <span class="widget-timer-badge">
+            <span class="material-symbols-outlined" style="font-size: 0.875rem;">timer</span>
+            {{ widget.timerType }}
+          </span>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none;"
+            (click)="copyToClipboard(widget); $event.stopPropagation()">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">content_copy</span>
+          </button>
+        </div>
+      </div>
+      }
+
+      <!-- ═══ QUICK_NOTE ═══ -->
+      @if (widget.type === 'QUICK_NOTE') {
+      <div class="widget-card">
+        <div class="widget-card-header">
+          <div class="widget-type-icon note-icon">
+            <span class="material-symbols-outlined">description</span>
+          </div>
+          <span class="widget-type-badge"
+            style="background: rgba(255, 139, 154, 0.1); color: var(--tertiary);">Nota</span>
+        </div>
+        <div class="widget-card-content">
+          <p class="widget-text-content">{{ getDisplayContent(widget) }}</p>
+        </div>
+        <div class="widget-card-footer">
+          <span class="widget-timer-badge">
+            <span class="material-symbols-outlined" style="font-size: 0.875rem;">timer</span>
+            {{ widget.timerType }}
+          </span>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none;"
+            (click)="copyToClipboard(widget); $event.stopPropagation()">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">content_copy</span>
+          </button>
+        </div>
+      </div>
+      }
+
+      <!-- ═══ VIDEO ═══ -->
+      @if (widget.type === 'VIDEO') {
+      <div class="widget-card widget-link" (click)="openLink(widget)">
+        <div class="widget-card-header">
+          <div class="widget-type-icon video-icon">
+            <span class="material-symbols-outlined">play_circle</span>
+          </div>
+          <span class="widget-type-badge"
+            style="background: rgba(255, 110, 132, 0.1); color: var(--error);">Video</span>
+        </div>
+        <div class="widget-card-content">
+          <span class="widget-link-url">{{ getDisplayContent(widget) }}</span>
+          <span class="widget-link-domain">{{ getDomain(widget) }}</span>
+        </div>
+        <div class="widget-card-footer">
+          <span class="widget-timer-badge">
+            <span class="material-symbols-outlined" style="font-size: 0.875rem;">timer</span>
+            {{ widget.timerType }}
+          </span>
+          <span class="widget-link-action">
+            Ver video
+            <span class="material-symbols-outlined" style="font-size: 1rem;">open_in_new</span>
+          </span>
+        </div>
+      </div>
+      }
+
+      <!-- ═══ IMAGE ═══ -->
+      @if (widget.type === 'IMAGE') {
+      <div class="widget-card widget-link" (click)="openLink(widget)">
+        <div class="widget-card-header">
+          <div class="widget-type-icon image-icon">
+            <span class="material-symbols-outlined">image</span>
+          </div>
+          <span class="widget-type-badge"
+            style="background: rgba(202, 152, 255, 0.1); color: var(--primary-container);">Imagen</span>
+        </div>
+        <div class="widget-card-content">
+          <span class="widget-link-url">{{ getDisplayContent(widget) }}</span>
+        </div>
+        <div class="widget-card-footer">
+          <span class="widget-timer-badge">
+            <span class="material-symbols-outlined" style="font-size: 0.875rem;">timer</span>
+            {{ widget.timerType }}
+          </span>
+          <span class="widget-link-action">
+            Ver imagen
+            <span class="material-symbols-outlined" style="font-size: 1rem;">open_in_new</span>
+          </span>
+        </div>
+      </div>
+      }
+
+      <!-- ═══ TASK_LIST ═══ -->
+      @if (widget.type === 'TASK_LIST') {
+      <div class="widget-card">
+        <div class="widget-card-header">
+          <div class="widget-type-icon task-icon">
+            <span class="material-symbols-outlined">checklist</span>
+          </div>
+          <span class="widget-type-badge"
+            style="background: rgba(244, 119, 136, 0.1); color: var(--tertiary-dim);">Tareas</span>
+        </div>
+        <div class="widget-card-content">
+          <p class="widget-text-content">{{ getDisplayContent(widget) }}</p>
+        </div>
+        <div class="widget-card-footer">
+          <span class="widget-timer-badge">
+            <span class="material-symbols-outlined" style="font-size: 0.875rem;">timer</span>
+            {{ widget.timerType }}
+          </span>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none;"
+            (click)="copyToClipboard(widget); $event.stopPropagation()">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">content_copy</span>
+          </button>
+        </div>
+      </div>
+      }
+
+      @if (widget.type === 'KEY') {
+      <div class="widget-card">
+        <div class="widget-card-header">
+          <div class="widget-type-icon key-icon">
+            <span class="material-symbols-outlined">key</span>
+          </div>
+          <span class="widget-type-badge"
+            style="background: rgba(244, 119, 136, 0.1); color: var(--tertiary-dim);">Key</span>
+        </div>
+        <div class="widget-card-content">
+          <p class="widget-text-content">{{ getDisplayContent(widget) }}</p>
+        </div>
+        <div class="widget-card-footer">
+          <span class="widget-timer-badge">
+            <span class="material-symbols-outlined" style="font-size: 0.875rem;">timer</span>
+            {{ widget.timerType }}
+          </span>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none;"
+            (click)="copyToClipboard(widget); $event.stopPropagation()">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">content_copy</span>
+          </button>
+        </div>
+      </div>
+      }
+
+      } @empty {
+      <!-- Opcional: Esto reemplaza al primer @if de widgets.length === 0 si prefieres manejarlo aquí -->
+      }
+    </div>
+    }
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" [class.show]="showToast">
+  <div class="toast-dot"></div>
+  <div class="toast-text">
+    <span class="label">Copiado</span>
+    <span class="message">{{ toastMessage }}</span>
+  </div>
+</div>

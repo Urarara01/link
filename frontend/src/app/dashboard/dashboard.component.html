@@ -1,0 +1,67 @@
+<!-- Page Header -->
+<div class="page-header">
+  <h2>Colecciones</h2>
+  <p>Manage your digital resources with atmospheric precision. Curate, tag, and organize your widget library.</p>
+</div>
+
+<!-- Create Collection Section (collapsible) -->
+<div class="form-section" style="margin-bottom: 2rem;" *ngIf="showCreateForm">
+  <h3>
+    <span class="material-symbols-outlined" style="font-size: 1.125rem; vertical-align: middle; margin-right: 0.5rem; color: var(--primary);">add_circle</span>
+    Nueva Colección
+  </h3>
+
+  <div class="form-group">
+    <label>Nombre</label>
+    <input type="text" class="input-field" placeholder="Mi colección..."
+           [(ngModel)]="newCollectionName" (keyup.enter)="createCollection()">
+  </div>
+  <div class="form-group">
+    <label>Descripción</label>
+    <textarea class="input-field" placeholder="¿De qué trata esta colección?" rows="3"
+              [(ngModel)]="newCollectionDesc"></textarea>
+  </div>
+  <div style="display: flex; gap: 0.75rem;">
+    <button class="btn-primary" style="flex: 1;" (click)="createCollection()">
+      <span class="material-symbols-outlined" style="font-size: 1rem;">check</span>
+      Crear Colección
+    </button>
+    <button class="btn-secondary" (click)="showCreateForm = false">Cancelar</button>
+  </div>
+</div>
+
+<!-- Collection Grid -->
+<div *ngIf="collections.length === 0 && !showCreateForm" class="empty-state">
+  <span class="material-symbols-outlined">folder_open</span>
+  <p>No tienes colecciones aún. Crea la primera para empezar.</p>
+  <button class="btn-primary" style="margin-top: 1.25rem;" (click)="showCreateForm = true">
+    <span class="material-symbols-outlined" style="font-size: 1rem;">add</span>
+    Crear Colección
+  </button>
+</div>
+
+<div class="collection-grid" *ngIf="collections.length > 0">
+  <div *ngFor="let col of collections; let i = index"
+       class="collection-card"
+       [routerLink]="['/collection', col.id]">
+    <div class="collection-card-banner">
+      <span class="material-symbols-outlined">{{ getBannerIcon(i) }}</span>
+    </div>
+    <div class="collection-card-body">
+      <h4>{{ col.name }}</h4>
+      <p>{{ col.description || 'Sin descripción' }}</p>
+      <div class="collection-card-footer">
+        <span class="badge">Colección</span>
+        <span class="view-link">
+          Ver Detalle
+          <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_forward</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Floating Action Button (shows form) -->
+<button class="fab" (click)="showCreateForm = !showCreateForm" *ngIf="collections.length > 0">
+  <span class="material-symbols-outlined">add</span>
+</button>

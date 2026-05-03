@@ -1,0 +1,412 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#c185ff",
+                    "surface-container": "#1a1a1a",
+                    "on-primary-fixed-variant": "#420078",
+                    "secondary-dim": "#ae8af8",
+                    "secondary-fixed": "#dcc9ff",
+                    "on-background": "#ffffff",
+                    "primary-dim": "#9c42f4",
+                    "error": "#ff6e84",
+                    "surface-container-low": "#131313",
+                    "on-secondary": "#310072",
+                    "on-tertiary-container": "#4d0015",
+                    "on-tertiary-fixed-variant": "#711229",
+                    "on-secondary-container": "#dbc7ff",
+                    "surface-container-lowest": "#000000",
+                    "secondary": "#b390fe",
+                    "on-primary": "#46007d",
+                    "surface-variant": "#262626",
+                    "on-secondary-fixed": "#411885",
+                    "inverse-on-surface": "#565555",
+                    "on-error-container": "#ffb2b9",
+                    "tertiary-fixed-dim": "#fa7c8d",
+                    "outline": "#767575",
+                    "on-tertiary-fixed": "#39000e",
+                    "tertiary-fixed": "#ff909e",
+                    "surface": "#0e0e0e",
+                    "background": "#0e0e0e",
+                    "surface-container-high": "#20201f",
+                    "primary-container": "#c185ff",
+                    "primary": "#ca98ff",
+                    "on-tertiary": "#62041f",
+                    "error-dim": "#d73357",
+                    "surface-tint": "#ca98ff",
+                    "primary-fixed-dim": "#b772ff",
+                    "inverse-primary": "#8523dd",
+                    "surface-container-highest": "#262626",
+                    "on-primary-container": "#350062",
+                    "outline-variant": "#484847",
+                    "secondary-container": "#543098",
+                    "on-surface-variant": "#adaaaa",
+                    "tertiary-dim": "#f47788",
+                    "on-secondary-fixed-variant": "#5e3ba3",
+                    "secondary-fixed-dim": "#d0b8ff",
+                    "inverse-surface": "#fcf9f8",
+                    "on-surface": "#ffffff",
+                    "surface-bright": "#2c2c2c",
+                    "on-error": "#490013",
+                    "error-container": "#a70138",
+                    "on-primary-fixed": "#000000",
+                    "surface-dim": "#0e0e0e",
+                    "tertiary-container": "#f7798b",
+                    "tertiary": "#ff8b9a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-transition-right {
+            background: linear-gradient(90deg, #1a1a1a 0%, #1a1a1a 98%, rgba(202, 152, 255, 0.03) 100%);
+        }
+        .glass-panel {
+            background-color: rgba(38, 38, 38, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #9c42f4 0%, #ca98ff 100%);
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0e0e0e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ca98ff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#1a1a1a] flex flex-col h-full border-r border-white/5 tonal-transition-right z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-xl primary-gradient flex items-center justify-center shadow-[0_0_20px_rgba(133,35,221,0.2)]">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">architecture</span>
+</div>
+<div>
+<h1 class="font-bold text-purple-400 font-inter text-sm leading-tight">Workspace</h1>
+<p class="text-zinc-500 text-[10px] uppercase tracking-widest">Pro Edition</p>
+</div>
+</div>
+<button class="w-full primary-gradient text-on-primary font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 mb-8 hover:scale-[1.02] transition-transform active:scale-95 shadow-lg">
+<span class="material-symbols-outlined text-sm">add</span>
+<span class="font-inter text-sm">New Collection</span>
+</button>
+<nav class="space-y-1">
+<!-- Active Item: Notes (Closest match to the requested view) -->
+<a class="flex items-center gap-3 text-purple-300 bg-purple-500/10 rounded-lg px-3 py-2 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-inter text-sm">Notes</span>
+</a>
+<a class="flex items-center gap-3 text-zinc-500 px-3 py-2 hover:text-purple-200 hover:bg-zinc-800/40 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="link">link</span>
+<span class="font-inter text-sm">All Links</span>
+</a>
+<a class="flex items-center gap-3 text-zinc-500 px-3 py-2 hover:text-purple-200 hover:bg-zinc-800/40 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="folder_special">folder_special</span>
+<span class="font-inter text-sm">Collections</span>
+</a>
+<a class="flex items-center gap-3 text-zinc-500 px-3 py-2 hover:text-purple-200 hover:bg-zinc-800/40 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="sell">sell</span>
+<span class="font-inter text-sm">Tags</span>
+</a>
+<a class="flex items-center gap-3 text-zinc-500 px-3 py-2 hover:text-purple-200 hover:bg-zinc-800/40 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="archive">archive</span>
+<span class="font-inter text-sm">Archive</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-white/5 space-y-1">
+<a class="flex items-center gap-3 text-zinc-500 px-3 py-2 hover:text-purple-200 hover:bg-zinc-800/40 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-inter text-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-zinc-500 px-3 py-2 hover:text-purple-200 hover:bg-zinc-800/40 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-inter text-sm">Support</span>
+</a>
+<div class="flex items-center gap-3 pt-6 mt-4">
+<div class="w-8 h-8 rounded-full bg-zinc-800 border border-white/10 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a designer with a focused expression in a dimly lit modern studio space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY0udJpwIqz-1aWTVgoGhFQsCe9w9ZFTV_QBsO6xmwEExCuMpar3wDAWmQEkuVbqybq3iT9-LmKGdzi7peLrue7QoMTW_ejj3W7DGHMSAlVKDLs22uRRlw4iB37NoUfS0gfZtUdtFWLRKIipH3XjdDkQ8FJxbUvTZaJ1z2TBd2qlAmJMEBCVYFPeds2XPilg8TOquxuuBXyrr2oiySRZO1BZyhBAsA-JZvDG8XVIVX54QshoorO9aLaGNdp1k_7-xR-VrwFNupxGst"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold truncate">Midnight Architect</p>
+<p class="text-[10px] text-zinc-500 truncate">Pro Account</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen bg-background p-8 lg:p-12">
+<!-- Header Area -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<nav class="flex items-center gap-2 text-primary text-[10px] font-bold tracking-[0.2em] uppercase mb-3">
+<span>Workspace</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span>Resources</span>
+</nav>
+<h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-on-surface">Notas y Números</h2>
+<p class="text-on-surface-variant mt-4 max-w-lg leading-relaxed">Centralized repository for secure strings, identification numbers, and recurring snippets. Click any card to copy immediately.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-surface-container-high rounded-full px-4 py-2 flex items-center gap-3 border border-outline-variant/15">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="text-xs font-medium text-on-surface-variant">42 Active Snippets</span>
+</div>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-background bg-zinc-800 flex items-center justify-center text-[10px] font-bold">JD</div>
+<div class="w-8 h-8 rounded-full border-2 border-background bg-purple-900 flex items-center justify-center text-[10px] font-bold">AL</div>
+</div>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Quick Access Column (Section 1) -->
+<div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Category Label -->
+<div class="sm:col-span-2 flex items-center gap-4 mt-4 mb-2">
+<h3 class="text-sm font-bold text-primary uppercase tracking-widest">Identification &amp; Access</h3>
+<div class="flex-1 h-[1px] bg-gradient-to-r from-outline-variant/30 to-transparent"></div>
+</div>
+<!-- Copy Card 1 -->
+<div class="group relative bg-surface-container-low rounded-xl p-5 hover:bg-surface-container-high transition-all duration-300 cursor-pointer shadow-[0_0_32px_rgba(133,35,221,0.03)] border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">badge</span>
+</div>
+<span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded uppercase tracking-tighter">Copy</span>
+</div>
+<p class="text-on-surface-variant text-xs mb-1">Corporate Tax ID</p>
+<p class="text-lg font-mono font-bold tracking-tight">ES-B12345678</p>
+<!-- Hover Feedback -->
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl flex items-center justify-center">
+<span class="text-primary font-bold text-xs uppercase tracking-widest">Click to Copy</span>
+</div>
+</div>
+<!-- Copy Card 2 -->
+<div class="group relative bg-surface-container-low rounded-xl p-5 hover:bg-surface-container-high transition-all duration-300 cursor-pointer shadow-[0_0_32px_rgba(133,35,221,0.03)] border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-lg">public</span>
+</div>
+<span class="text-[10px] font-bold text-secondary bg-secondary/10 px-2 py-0.5 rounded uppercase tracking-tighter">Copy</span>
+</div>
+<p class="text-on-surface-variant text-xs mb-1">VAT Number</p>
+<p class="text-lg font-mono font-bold tracking-tight">GB 987 6543 21</p>
+<div class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl flex items-center justify-center">
+<span class="text-secondary font-bold text-xs uppercase tracking-widest">Click to Copy</span>
+</div>
+</div>
+<!-- Long Snippet Card -->
+<div class="sm:col-span-2 group relative bg-surface-container-low rounded-xl p-5 hover:bg-surface-container-high transition-all duration-300 cursor-pointer border border-outline-variant/10">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-lg">code</span>
+</div>
+<p class="text-on-surface-variant text-xs font-medium">Standard Project Header</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">content_copy</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/10">
+<code class="text-sm text-tertiary-fixed-dim block font-mono leading-relaxed truncate">/* PROJECT_ALPHA v2.4 | Copyright 2024 Ethereal Systems */</code>
+</div>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl pointer-events-none"></div>
+</div>
+<!-- Category Label -->
+<div class="sm:col-span-2 flex items-center gap-4 mt-8 mb-2">
+<h3 class="text-sm font-bold text-primary uppercase tracking-widest">Communication Refs</h3>
+<div class="flex-1 h-[1px] bg-gradient-to-r from-outline-variant/30 to-transparent"></div>
+</div>
+<!-- Contact Grid -->
+<div class="group relative bg-surface-container-low rounded-xl p-5 hover:bg-surface-container-high transition-all duration-300 cursor-pointer border border-outline-variant/10">
+<p class="text-on-surface-variant text-xs mb-1">Global Support HQ</p>
+<div class="flex items-baseline gap-2">
+<span class="material-symbols-outlined text-xs text-primary">call</span>
+<p class="text-lg font-bold">+1 (555) 000-ETH-9</p>
+</div>
+</div>
+<div class="group relative bg-surface-container-low rounded-xl p-5 hover:bg-surface-container-high transition-all duration-300 cursor-pointer border border-outline-variant/10">
+<p class="text-on-surface-variant text-xs mb-1">Secure Mailbox</p>
+<div class="flex items-baseline gap-2">
+<span class="material-symbols-outlined text-xs text-primary">alternate_email</span>
+<p class="text-lg font-bold">vault@ethereal.so</p>
+</div>
+</div>
+</div>
+<!-- Focus Column (Section 2) - Asymmetric Sidebar Area -->
+<div class="md:col-span-4 space-y-6">
+<!-- Recent Clipboard Card (Special Visual) -->
+<div class="bg-surface-container rounded-2xl p-6 border border-primary/20 shadow-[0_0_40px_rgba(133,35,221,0.1)] relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+<h4 class="text-xs font-bold text-primary uppercase tracking-widest mb-6 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                        Recently Copied
+                    </h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary-fixed border border-outline-variant/20">
+<span class="material-symbols-outlined">link</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold truncate">meeting-notes-july.md</p>
+<p class="text-[10px] text-on-surface-variant">2 mins ago</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-secondary-dim border border-outline-variant/20">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold truncate">IBAN: ES91 0049 1500...</p>
+<p class="text-[10px] text-on-surface-variant">14 mins ago</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-3 rounded-xl border border-outline-variant/20 text-xs font-bold hover:bg-surface-variant/40 transition-colors">
+                        Clear History
+                    </button>
+</div>
+<!-- Interactive Widget: Add Snippet -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/15 flex flex-col gap-4">
+<h4 class="text-sm font-bold">Quick Capture</h4>
+<div class="relative">
+<textarea class="w-full bg-surface-container-low border-none rounded-xl text-sm p-4 h-24 focus:ring-1 focus:ring-primary placeholder:text-on-surface-variant/40 resize-none" placeholder="Type snippet here..."></textarea>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">tag</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">lock</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary text-[10px] font-bold px-4 py-2 rounded-lg uppercase tracking-widest shadow-lg shadow-primary/10">
+                            Save Note
+                        </button>
+</div>
+</div>
+<!-- Aesthetic Decorative Visual -->
+<div class="h-40 rounded-2xl overflow-hidden relative group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="abstract 3D render of flowing purple silk-like ribbons in a dark void with soft cinematic lighting and neon accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK4iPjvXHkDHatglKhfhpCdngexQnteAzDd3XhxkoEimmtDqF_1rPlKla8hZgtFVvKdno_VWYSxn-FK69bIEwgvSHR9V32DGsfQLJ4TRHK0mrNF3LSdlMXH8M_cJXn8eBjUUhOghJshqEmqJkZatR7LwlWUk0tIKdhVnh6qmhVdA8U1eMdLBRvTFVLYd5lsYWPI8v7JIP5kXC1kRg4Y-CAgpml2znj3GWXv6wnmSAVdlJpBmloJqj0NqwpVqu42nYsjwbB02rx-tVl"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<p class="text-[10px] font-bold text-primary-dim uppercase tracking-[0.3em]">Ethereal Vault</p>
+<p class="text-xs font-medium text-on-surface/80">End-to-End Encrypted</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Density Lists Section -->
+<section class="mt-16">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xl font-bold tracking-tight">Recurring Snippets</h3>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/10">
+<!-- Density Row 1 -->
+<div class="group flex flex-wrap items-center justify-between p-4 px-6 hover:bg-surface-bright/30 transition-colors cursor-pointer border-b border-outline-variant/5">
+<div class="flex items-center gap-4 min-w-[200px]">
+<span class="material-symbols-outlined text-primary-dim">history_edu</span>
+<span class="text-sm font-medium">Standard Legal Footer (EN)</span>
+</div>
+<div class="flex-1 px-8">
+<span class="text-xs text-on-surface-variant font-mono truncate block max-w-md opacity-60">This electronic message contains information from Ethereal...</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-[10px] font-bold text-on-surface-variant/40">Markdown</span>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
+<button class="bg-surface-container-highest px-3 py-1 rounded-full text-[10px] font-bold text-primary hover:bg-primary/20">COPY</button>
+<button class="text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+</div>
+<!-- Density Row 2 -->
+<div class="group flex flex-wrap items-center justify-between p-4 px-6 hover:bg-surface-bright/30 transition-colors cursor-pointer border-b border-outline-variant/5">
+<div class="flex items-center gap-4 min-w-[200px]">
+<span class="material-symbols-outlined text-secondary">terminal</span>
+<span class="text-sm font-medium">Deployment Hook API Key</span>
+</div>
+<div class="flex-1 px-8">
+<span class="text-xs text-on-surface-variant font-mono truncate block max-w-md opacity-60">sk_live_51M0...92j08w0</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-[10px] font-bold text-on-surface-variant/40">Secret</span>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
+<button class="bg-surface-container-highest px-3 py-1 rounded-full text-[10px] font-bold text-primary hover:bg-primary/20">COPY</button>
+<button class="text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+</div>
+<!-- Density Row 3 -->
+<div class="group flex flex-wrap items-center justify-between p-4 px-6 hover:bg-surface-bright/30 transition-colors cursor-pointer">
+<div class="flex items-center gap-4 min-w-[200px]">
+<span class="material-symbols-outlined text-tertiary">language</span>
+<span class="text-sm font-medium">Primary Domain Name</span>
+</div>
+<div class="flex-1 px-8">
+<span class="text-xs text-on-surface-variant font-mono truncate block max-w-md opacity-60">https://ethereal-productivity-framework.io</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-[10px] font-bold text-on-surface-variant/40">Link</span>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
+<button class="bg-surface-container-highest px-3 py-1 rounded-full text-[10px] font-bold text-primary hover:bg-primary/20">COPY</button>
+<button class="text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Feedback Toast (Hidden by default, used for the "Visual Feedback" rule) -->
+<div class="fixed bottom-8 right-8 bg-surface-container-high border border-primary/40 rounded-xl py-3 px-5 flex items-center gap-4 shadow-2xl z-[100] transform translate-y-24 transition-transform duration-500 hover:translate-y-0" id="copy-toast">
+<div class="w-2 h-2 rounded-full bg-primary animate-ping"></div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest leading-none mb-1">Success</span>
+<p class="text-xs font-medium">Copied to clipboard</p>
+</div>
+<button class="ml-4 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</body></html>

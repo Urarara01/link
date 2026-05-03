@@ -1,0 +1,8 @@
+{
+  "collectionId": 1,
+  "type": "LINK",
+  "timerType": "INDEFINITE",
+  "content": {
+    "data": "test"
+  }
+}

@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: link
+  datasource:
+    url: jdbc:postgresql://localhost:5432/linkholder
+    username: linkholder_user
+    password: Holi1617
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+server:
+  port: 8080
+  address: 0.0.0.0

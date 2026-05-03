@@ -1,0 +1,55 @@
+<div class="app-shell">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-icon">
+          <span class="material-symbols-outlined">auto_awesome</span>
+        </div>
+        <div class="sidebar-brand-text">
+          <h1>Workspace</h1>
+          <span>Pro Edition</span>
+        </div>
+      </div>
+
+      <button class="btn-primary" style="width: 100%; margin-bottom: 1.5rem;" routerLink="/">
+        <span class="material-symbols-outlined" style="font-size: 1rem;">add</span>
+        New Collection
+      </button>
+
+      <nav class="sidebar-nav">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <span class="material-symbols-outlined">dashboard</span> Dashboard
+        </a>
+        <a routerLink="/collections" routerLinkActive="active">
+          <span class="material-symbols-outlined">folder_special</span> Collections
+        </a>
+        <a routerLink="/notes" routerLinkActive="active">
+          <span class="material-symbols-outlined">description</span> Notes
+        </a>
+        <a href="javascript:void(0)">
+          <span class="material-symbols-outlined">sell</span> Tags
+        </a>
+        <a href="javascript:void(0)">
+          <span class="material-symbols-outlined">archive</span> Archive
+        </a>
+      </nav>
+    </div>
+
+    <div class="sidebar-footer">
+      <nav class="sidebar-nav">
+        <a href="javascript:void(0)">
+          <span class="material-symbols-outlined">settings</span> Settings
+        </a>
+        <a href="javascript:void(0)">
+          <span class="material-symbols-outlined">help</span> Support
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Main Area -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

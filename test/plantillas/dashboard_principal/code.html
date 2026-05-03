@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ethereal - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#c185ff",
+                        "surface-container": "#1a1a1a",
+                        "on-primary-fixed-variant": "#420078",
+                        "secondary-dim": "#ae8af8",
+                        "secondary-fixed": "#dcc9ff",
+                        "on-background": "#ffffff",
+                        "primary-dim": "#9c42f4",
+                        "error": "#ff6e84",
+                        "surface-container-low": "#131313",
+                        "on-secondary": "#310072",
+                        "on-tertiary-container": "#4d0015",
+                        "on-tertiary-fixed-variant": "#711229",
+                        "on-secondary-container": "#dbc7ff",
+                        "surface-container-lowest": "#000000",
+                        "secondary": "#b390fe",
+                        "on-primary": "#46007d",
+                        "surface-variant": "#262626",
+                        "on-secondary-fixed": "#411885",
+                        "inverse-on-surface": "#565555",
+                        "on-error-container": "#ffb2b9",
+                        "tertiary-fixed-dim": "#fa7c8d",
+                        "outline": "#767575",
+                        "on-tertiary-fixed": "#39000e",
+                        "tertiary-fixed": "#ff909e",
+                        "surface": "#0e0e0e",
+                        "background": "#0e0e0e",
+                        "surface-container-high": "#20201f",
+                        "primary-container": "#c185ff",
+                        "primary": "#ca98ff",
+                        "on-tertiary": "#62041f",
+                        "error-dim": "#d73357",
+                        "surface-tint": "#ca98ff",
+                        "primary-fixed-dim": "#b772ff",
+                        "inverse-primary": "#8523dd",
+                        "surface-container-highest": "#262626",
+                        "on-primary-container": "#350062",
+                        "outline-variant": "#484847",
+                        "secondary-container": "#543098",
+                        "on-surface-variant": "#adaaaa",
+                        "tertiary-dim": "#f47788",
+                        "on-secondary-fixed-variant": "#5e3ba3",
+                        "secondary-fixed-dim": "#d0b8ff",
+                        "inverse-surface": "#fcf9f8",
+                        "on-surface": "#ffffff",
+                        "surface-bright": "#2c2c2c",
+                        "on-error": "#490013",
+                        "error-container": "#a70138",
+                        "on-primary-fixed": "#000000",
+                        "surface-dim": "#0e0e0e",
+                        "tertiary-container": "#f7798b",
+                        "tertiary": "#ff8b9a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0e0e0e;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(38, 38, 38, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .purple-glow {
+            box-shadow: 0 0 32px rgba(133, 35, 221, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #9c42f4 0%, #ca98ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .button-gradient {
+            background: linear-gradient(135deg, #9c42f4 0%, #ca98ff 100%);
+        }
+        .tonal-transition-right {
+            background: linear-gradient(to right, #1a1a1a, #0e0e0e);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#1a1a1a] flex flex-col border-r border-white/5 font-inter text-sm z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-dim to-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed" data-icon="architecture">architecture</span>
+</div>
+<div>
+<h2 class="font-bold text-purple-400">Workspace</h2>
+<p class="text-[10px] uppercase tracking-widest text-zinc-500">Pro Edition</p>
+</div>
+</div>
+<button class="w-full py-3 px-4 mb-8 bg-zinc-800/50 hover:bg-zinc-800 transition-all text-primary border border-primary/10 rounded-lg flex items-center justify-center gap-2 font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Collection
+            </button>
+<nav class="flex flex-col gap-1">
+<!-- Active Item -->
+<a class="text-purple-300 bg-purple-500/10 rounded-lg px-3 py-2 flex items-center gap-3 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    All Links
+                </a>
+<a class="text-zinc-500 px-3 py-2 flex items-center gap-3 hover:text-purple-200 hover:bg-zinc-800/40 rounded-lg transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="folder_special">folder_special</span>
+                    Collections
+                </a>
+<a class="text-zinc-500 px-3 py-2 flex items-center gap-3 hover:text-purple-200 hover:bg-zinc-800/40 rounded-lg transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+                    Notes
+                </a>
+<a class="text-zinc-500 px-3 py-2 flex items-center gap-3 hover:text-purple-200 hover:bg-zinc-800/40 rounded-lg transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="sell">sell</span>
+                    Tags
+                </a>
+<a class="text-zinc-500 px-3 py-2 flex items-center gap-3 hover:text-purple-200 hover:bg-zinc-800/40 rounded-lg transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="archive">archive</span>
+                    Archive
+                </a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-white/5">
+<nav class="flex flex-col gap-1">
+<a class="text-zinc-500 px-3 py-2 flex items-center gap-3 hover:text-purple-200 hover:bg-zinc-800/40 rounded-lg transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    Settings
+                </a>
+<a class="text-zinc-500 px-3 py-2 flex items-center gap-3 hover:text-purple-200 hover:bg-zinc-800/40 rounded-lg transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                    Support
+                </a>
+</nav>
+<div class="mt-6 flex items-center gap-3 px-3">
+<img class="w-8 h-8 rounded-full border border-primary/20" data-alt="Portrait of a modern digital architect with thoughtful expression, dramatic studio lighting on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBQhaq__8lVxEdMNw86WmDjB7islWZbq1axyD-secwUVk1rsdvLcpE1DPU7zRpQDMJQMeOx3RTHKzO5cWxDYHUKEIDLp0I3w-iUp8qrTPhyiWTwf_MqmoOTfbr6W3IeqEOmE19scmP4jSSZsKG_645eyfF4V_dmCr9DvTcyzPCWk9XBvERDktACswSRgPwuzkLvNVxGDCG4CC5lOsTa_mfGGzkwmQJdAddiPSZaUxYGmStspjfN9k2hTW_V_OcgT2Upi7GxPezaBhX"/>
+<div class="overflow-hidden">
+<p class="text-on-surface font-medium truncate">Midnight Architect</p>
+<p class="text-[10px] text-zinc-500">midnight.arch@pro.io</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen relative p-8">
+<!-- Search & Hybrid Input -->
+<header class="max-w-4xl mx-auto mb-16 pt-8">
+<div class="relative group">
+<div class="absolute inset-0 bg-primary/20 blur-3xl opacity-20 group-focus-within:opacity-40 transition-opacity"></div>
+<div class="relative flex items-center bg-surface-container-lowest border border-outline-variant/30 rounded-2xl px-6 py-4 purple-glow">
+<span class="material-symbols-outlined text-primary-dim mr-4" data-icon="search">search</span>
+<input class="bg-transparent border-none text-on-surface w-full focus:ring-0 text-lg placeholder:text-on-surface-variant/50" placeholder="Search resources or paste a link to save..." type="text"/>
+<div class="flex items-center gap-3 border-l border-outline-variant/30 pl-6 ml-4">
+<span class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">Quick Add</span>
+<kbd class="px-2 py-1 bg-surface-container-high rounded text-[10px] text-primary border border-primary/20">⌘ K</kbd>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Identity -->
+<div class="max-w-6xl mx-auto mb-12">
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Dashboard</h1>
+<p class="text-on-surface-variant body-md max-w-2xl">Welcome back. Your precision digital workspace is synchronized across all nodes.</p>
+</div>
+<!-- Recently Saved Section -->
+<section class="max-w-6xl mx-auto mb-16">
+<div class="flex items-end justify-between mb-8">
+<h2 class="text-xl font-bold text-on-surface">Recently Saved</h2>
+<a class="text-primary text-sm hover:underline" href="#">View all activity</a>
+</div>
+<!-- Cards Grid: Asymmetric Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Large Card (Link) -->
+<div class="md:col-span-7 glass-card rounded-xl p-6 border border-outline-variant/10 hover:border-primary/20 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="link">link</span>
+</div>
+<div>
+<h3 class="font-bold text-on-surface">The Future of Interaction Design</h3>
+<p class="text-xs text-on-surface-variant">medium.com/design-journal</p>
+</div>
+</div>
+<span class="text-[10px] text-zinc-600 bg-zinc-800/50 px-2 py-1 rounded">2m ago</span>
+</div>
+<div class="mb-6 rounded-lg overflow-hidden h-40">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="Abstract futuristic UI elements with glowing purple lines and data visualizations on a dark digital canvas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqY5UwIFPgunWC0JF3-kvU9seZzTPLERHP_x9V5iL9NJtNDGxy1a72x6UbI97ePCgVosrfPYItBh8xkNpeTvJLOGhIQ3efnGnlXoD0A3-nFFRquMUlsRYtKZgyfYgVPhg1TG-E-R30yVQTzr-maaLVCxYtKoAFjEIGG3SYVSu4wtvfvbSiae5qiYmoamal_5tc0DNROBXGikSXLDkOe-rNPIa05sqSxLqcsIIIiqU0gGOGAw5kqPhoROBeAnlXKCHxzDtY1PvF-AgO"/>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex gap-2">
+<span class="px-2 py-1 rounded-md bg-surface-variant text-[10px] text-on-surface-variant">#Design</span>
+<span class="px-2 py-1 rounded-md bg-surface-variant text-[10px] text-on-surface-variant">#AI</span>
+</div>
+<button class="group/btn flex items-center gap-2 py-1.5 px-3 rounded-lg hover:bg-primary/10 transition-colors">
+<span class="text-[10px] font-bold text-primary opacity-0 group-hover/btn:opacity-100 transition-opacity">Copy</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Small Card (Note) -->
+<div class="md:col-span-5 glass-card rounded-xl p-6 border border-outline-variant/10 hover:border-primary/20 transition-all flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<span class="text-[10px] text-zinc-600 bg-zinc-800/50 px-2 py-1 rounded">1h ago</span>
+</div>
+<h3 class="font-bold text-on-surface mb-2">Q3 Growth Strategies</h3>
+<p class="text-sm text-on-surface-variant body-sm leading-relaxed mb-6 line-clamp-4">
+                        Focus on community-driven architecture. The core value prop should emphasize speed and vertical integration. Explore new glassmorphic styles for the mobile expansion...
+                    </p>
+<div class="mt-auto pt-6 border-t border-white/5 flex justify-between items-center">
+<span class="text-[10px] uppercase tracking-widest text-zinc-600 font-bold">Encrypted Note</span>
+<button class="group/btn flex items-center gap-2 py-1.5 px-3 rounded-lg hover:bg-primary/10 transition-colors">
+<span class="text-[10px] font-bold text-primary opacity-0 group-hover/btn:opacity-100 transition-opacity">Copy</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Small Card (Number/Snippet) -->
+<div class="md:col-span-4 glass-card rounded-xl p-6 border border-outline-variant/10 hover:border-primary/20 transition-all">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="key">key</span>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">API Key Secret</span>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-4 mb-4 font-mono text-xs text-secondary-dim border border-white/5">
+                        sk-ethereal-9283...x92
+                    </div>
+<button class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-surface-container-high hover:bg-surface-bright text-primary text-xs font-bold transition-all">
+                        Click to Copy
+                        <span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+<!-- Small Card (Number/Snippet) -->
+<div class="md:col-span-4 glass-card rounded-xl p-6 border border-outline-variant/10 hover:border-primary/20 transition-all">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="numbers">numbers</span>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Hex Color Palette</span>
+</div>
+<div class="flex gap-2 mb-4">
+<div class="h-8 flex-1 bg-[#ca98ff] rounded"></div>
+<div class="h-8 flex-1 bg-[#9c42f4] rounded"></div>
+<div class="h-8 flex-1 bg-[#1a1a1a] rounded border border-white/10"></div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-surface-container-high hover:bg-surface-bright text-primary text-xs font-bold transition-all">
+                        Click to Copy
+                        <span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+<!-- Small Card (List Preview) -->
+<div class="md:col-span-4 glass-card rounded-xl p-6 border border-outline-variant/10 hover:border-primary/20 transition-all">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="format_list_bulleted">format_list_bulleted</span>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Shopping List</span>
+</div>
+<ul class="text-xs text-on-surface-variant space-y-2 mb-4">
+<li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-error"></span> 4K Monitor Arm</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-error"></span> Desk Mat (Dark)</li>
+</ul>
+<button class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-surface-container-high hover:bg-surface-bright text-primary text-xs font-bold transition-all">
+                        Click to Copy
+                        <span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Top Collections Grid -->
+<section class="max-w-6xl mx-auto">
+<div class="flex items-end justify-between mb-8">
+<h2 class="text-xl font-bold text-on-surface">Top Collections</h2>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-on-surface text-sm transition-colors">
+                    Filter by Tag <span class="material-symbols-outlined text-sm" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+</div>
+<!-- Bento Grid of Collections -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="group relative overflow-hidden rounded-xl bg-surface-container h-48 border border-outline-variant/10 hover:border-primary/40 transition-all p-6 flex flex-col justify-between">
+<div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Modern workstation with mechanical keyboard and clean coding environment at night with soft neon glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx-0MgHYtfvvWnAbhC2feHtmnS2kYS4HkwUATaFP1dROXqy3x0DDcfTfqw-Sq1fWc90I6REyqbh5Q7Nbt-PzW1bbB54l0H15nUhVlRlOwQ8x_0KA57ZpKWAPJtcGFtCxo_Z8ul4OysQ9HXvSUcU9Aj0HP17bVedCMFl2qSqQ7gykd7YmII8tg8OZVME87zv1bUiK6B_9YQ2RbZUYQ8maMm-ew6RuG9RGyDDW3Bt_FQh9jH4olJmT7V6QHYobNOVSTr0otp2mqBPRKs"/>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="code">code</span>
+<div>
+<h4 class="font-bold text-on-surface text-lg">Engineering</h4>
+<p class="text-xs text-primary-fixed-dim font-medium">128 items</p>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-surface-container h-48 border border-outline-variant/10 hover:border-primary/40 transition-all p-6 flex flex-col justify-between">
+<div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Abstract colorful light streaks on black background mimicking digital data flow and speed" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtMgqYFuRKBEan0iRBz-32np2yMqLHBk7brNqVDDBCLCHIuB86cUlMuPOzKWaqS3ZMaSCG5e_z6b0OzVENMujIQ-5uoqg9WdY6kkjeta1T53_NG25OOLRG_KqgYouYF-kzLaNIsxCK7SwvbU7dhOJ3UsWxnvZgw55JM3O_eVUMei5pW7Qj7NALMCvXm-nI5din35EmB2ZMaFMmkXBDU0nka3RYjIjL0tWGj7AgHxthd5S-Q9n3qEalIDg4jDBCxl9xyC6T4u2rG4Ax"/>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="palette">palette</span>
+<div>
+<h4 class="font-bold text-on-surface text-lg">Visual Inspo</h4>
+<p class="text-xs text-secondary-fixed-dim font-medium">42 items</p>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-surface-container h-48 border border-outline-variant/10 hover:border-primary/40 transition-all p-6 flex flex-col justify-between">
+<div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Minimalist bookshelf with white books on dark wood shelf in a moody contemporary library setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8OcRJsZ-TRpo8yEb1GtgvaUeucQHTl25Mf8Al1PLBMAukbyBlBdwx58NlK5B1cBgBlWU-zD0-aEqO64fMlmABrlh6BD4R0SoTjhgp8-baIQSMhr1atmY8YHUMFeLxFfZdnr-fqkNKNbdIzefNIJPR8HpLi--Q7an8e0NF5OKw30Pru3LQPE2feLv6r2O3p21y3F9wRdvSi8JAWTLcq6SsTsqxbNiM1ZluwksyICIrrwA_0uPZeW8zlx2LS772ukuqawtnqMe7-8YO"/>
+</div>
+<span class="material-symbols-outlined text-tertiary" data-icon="menu_book">menu_book</span>
+<div>
+<h4 class="font-bold text-on-surface text-lg">Reading List</h4>
+<p class="text-xs text-tertiary-fixed-dim font-medium">85 items</p>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-surface-container h-48 border border-outline-variant/10 hover:border-primary/40 transition-all p-6 flex flex-col justify-between">
+<div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Close-up of a high-end luxury watch movement and dial, emphasizing precision and architecture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtW1xpKedcVicXCy1YVhRM8LCaTngN6fgyfV-wP15UJsfRcUsgBM17LzpWP6R_fLZYUPSUiUNyUbvJQG-TOnPBVfUzhMocfFrqpiCY7Lu8OGASZuy3LYpssQzlF3u2IocJ75qebB9Y1GAXMk5M_D6qreT7nJI4wQnv_2lhj8FqhPvIXynt42hFoHxIZoCepXdBZKYng_6nXXbYfJuMSk8_DQ8ZvqzwiYxJ5smd5uYK64jRTY1KWDl9Vag153Vs5In9sHwpOElO0Bv-"/>
+</div>
+<span class="material-symbols-outlined text-zinc-400" data-icon="folder_open">folder_open</span>
+<div>
+<h4 class="font-bold text-on-surface text-lg">Work Assets</h4>
+<p class="text-xs text-zinc-500 font-medium">12 items</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Signature Floating Action Button -->
+<button class="fixed bottom-8 right-8 w-14 h-14 button-gradient rounded-full shadow-[0_8px_32px_rgba(133,35,221,0.4)] flex items-center justify-center text-on-primary-fixed hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</main>
+</body></html>
