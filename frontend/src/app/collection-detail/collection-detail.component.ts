@@ -153,8 +153,81 @@ export class CollectionDetailComponent implements OnInit {
       case 'QUICK_NOTE': return 'Escribe tu nota rápida...';
       case 'TASK_LIST': return 'Tarea 1, Tarea 2, Tarea 3...';
       case 'KEY': return 'Escribe tu key aquí...';
-      case 'CARD': return 'Escribe el contenido de tu tarjeta aquí...';
+      case 'CARD': return 'xxxxxxxxxxxxxxxx|xx|xxxx|xxx';
       default: return 'Contenido del widget...';
     }
+  }
+
+  /** Parse card data from format: cardNumber|month|year|cvv, cardNumber month year cvv, cardNumber,month,year,cvv, or cardNumber/month/year/cvv */
+  parseCardData(content: string): { cardNumber: string; expiry: string; cvv: string } | null {
+    let parts: string[] | null = null;
+    if (content.includes('|')) {
+      parts = content.split('|');
+    } else if (content.includes(',')) {
+      parts = content.split(',');
+    } else if (content.includes('/')) {
+      parts = content.split('/');
+    } else if (content.includes(' ')) {
+      parts = content.split(' ');
+    }
+
+    if (!parts || parts.length !== 4) return null;
+
+    const cardNumber = parts[0].replace(/\s+/g, '').trim();
+    const month = parts[1].trim();
+    const year = parts[2].trim();
+    const cvv = parts[3].trim();
+
+    // Validate that they are numbers
+    if (!/^\d+$/.test(cardNumber) || !/^\d+$/.test(month) || !/^\d+$/.test(year) || !/^\d+$/.test(cvv)) {
+      return null;
+    }
+
+    return {
+      cardNumber,
+      expiry: `${month}/${year}`,
+      cvv
+    };
+  }
+
+  /** Get card number from widget */
+  getCardNumber(widget: Widget): string {
+    const content = this.getDisplayContent(widget);
+    const cardData = this.parseCardData(content);
+    return cardData ? cardData.cardNumber : '';
+  }
+
+  /** Get expiry date from widget */
+  getCardExpiry(widget: Widget): string {
+    const content = this.getDisplayContent(widget);
+    const cardData = this.parseCardData(content);
+    return cardData ? cardData.expiry : '';
+  }
+
+  /** Get CVV from widget */
+  getCardCVV(widget: Widget): string {
+    const content = this.getDisplayContent(widget);
+    const cardData = this.parseCardData(content);
+    return cardData ? cardData.cvv : '';
+  }
+
+  /** Check if widget content is a valid card format */
+  isValidCardFormat(widget: Widget): boolean {
+    const content = this.getDisplayContent(widget);
+    return this.parseCardData(content) !== null;
+  }
+
+  /** Copy specific card field to clipboard */
+  copyCardField(field: string, value: string) {
+    if (!value) return;
+
+    navigator.clipboard.writeText(value).then(() => {
+      const fieldLabel = field === 'card' ? 'Tarjeta' : field === 'expiry' ? 'Fecha' : 'CVV';
+      this.toastMessage = `${fieldLabel} copiado al portapapeles`;
+      this.showToast = true;
+      setTimeout(() => { this.showToast = false; }, 2500);
+    }).catch(err => {
+      console.error('Clipboard copy failed', err);
+    });
   }
 }

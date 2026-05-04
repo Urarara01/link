@@ -932,3 +932,143 @@ select.input-field {
     grid-template-columns: 1fr;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   CC STYLE
+   ═══════════════════════════════════════════════ */
+.card-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card-field {
+  background: var(--surface-container-lowest);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+}
+
+.card-field-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--on-surface-variant);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.card-field-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-field-value {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--on-surface);
+  word-break: break-all;
+  flex: 1;
+}
+
+.card-copy-btn {
+  width: 2rem !important;
+  height: 2rem !important;
+  border: none !important;
+  background: rgba(202, 152, 255, 0.1) !important;
+  color: var(--primary) !important;
+  border-radius: 0.375rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all var(--transition-fast) !important;
+  opacity: 0.7 !important;
+}
+
+.card-copy-btn:hover {
+  background: rgba(202, 152, 255, 0.2) !important;
+  opacity: 1 !important;
+  transform: scale(1.05) !important;
+}
+
+/* ═══════════════════════════════════════════════
+   CARD WIDGET FIELDS
+   ═══════════════════════════════════════════════ */
+.card-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card-field {
+  background: var(--surface-container-lowest);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.625rem;
+  padding: 1rem;
+  transition: all var(--transition-normal);
+}
+
+.card-field:hover {
+  background: var(--surface-container-low);
+  border-color: rgba(202, 152, 255, 0.15);
+}
+
+.card-field-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.card-field-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--on-surface-variant);
+}
+
+.card-copy-button {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: rgba(202, 152, 255, 0.1);
+  color: var(--primary);
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  opacity: 0.7;
+}
+
+.card-copy-button:hover {
+  background: rgba(202, 152, 255, 0.2);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.card-copy-button .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.card-field-value {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--on-surface);
+  word-break: break-all;
+  line-height: 1.4;
+}
+
+.card-field-value.placeholder {
+  color: #999;
+  font-style: italic;
+  opacity: 0.7;
+}
