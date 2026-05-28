@@ -40,6 +40,10 @@ public class WidgetService {
         return mapToDto(saved);
     }
 
+    public void deleteWidget(Long widgetId) {
+        widgetRepository.deleteById(widgetId);
+    }
+
     private WidgetDto mapToDto(Widget widget) {
         WidgetDto dto = new WidgetDto();
         dto.setId(widget.getId());

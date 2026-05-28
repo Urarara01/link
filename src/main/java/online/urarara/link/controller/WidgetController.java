@@ -24,4 +24,10 @@ public class WidgetController {
     public ResponseEntity<WidgetDto> createWidget(@RequestBody WidgetDto dto) {
         return ResponseEntity.ok(widgetService.createWidget(dto));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteWidget(@PathVariable Long id) {
+        widgetService.deleteWidget(id);
+        return ResponseEntity.noContent().build();
+    }
 }

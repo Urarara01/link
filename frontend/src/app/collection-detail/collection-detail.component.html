@@ -91,6 +91,10 @@
             <i class="fas fa-clone" (click)="copyToClipboard(widget); $event.stopPropagation()"></i>
             <span class="tooltip-text">Copiar</span>
           </span>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none; margin-left: 0.5rem;"
+            (click)="deleteWidget(widget, $event)">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">delete</span>
+          </button>
         </div>
       </div>
       }
@@ -117,6 +121,10 @@
           @if (widget.isActive) {
           <span class="widget-active-dot"></span>
           }
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none; margin-left: 0.5rem;"
+            (click)="deleteWidget(widget, $event)">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">delete</span>
+          </button>
         </div>
         <div class="widget-copy-overlay">
           <span>Click para copiar</span>
@@ -146,6 +154,10 @@
             (click)="copyToClipboard(widget); $event.stopPropagation()">
             <span class="material-symbols-outlined" style="font-size: 1rem;">content_copy</span>
           </button>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none; margin-left: 0.5rem;"
+            (click)="deleteWidget(widget, $event)">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">delete</span>
+          </button>
         </div>
       </div>
       }
@@ -171,6 +183,10 @@
           <button class="btn-icon" style="width: 2rem; height: 2rem; border: none;"
             (click)="copyToClipboard(widget); $event.stopPropagation()">
             <span class="material-symbols-outlined" style="font-size: 1rem;">content_copy</span>
+          </button>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none; margin-left: 0.5rem;"
+            (click)="deleteWidget(widget, $event)">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">delete</span>
           </button>
         </div>
       </div>
@@ -199,6 +215,10 @@
             Ver video
             <span class="material-symbols-outlined" style="font-size: 1rem;">open_in_new</span>
           </span>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none; margin-left: 0.5rem;"
+            (click)="deleteWidget(widget, $event)">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">delete</span>
+          </button>
         </div>
       </div>
       }
@@ -226,6 +246,10 @@
             Ver imagen
             <span class="material-symbols-outlined" style="font-size: 1rem;">open_in_new</span>
           </span>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none; margin-left: 0.5rem;"
+            (click)="deleteWidget(widget, $event)">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">delete</span>
+          </button>
         </div>
       </div>
       }
@@ -251,6 +275,10 @@
           <button class="btn-icon" style="width: 2rem; height: 2rem; border: none;"
             (click)="copyToClipboard(widget); $event.stopPropagation()">
             <span class="material-symbols-outlined" style="font-size: 1rem;">content_copy</span>
+          </button>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none; margin-left: 0.5rem;"
+            (click)="deleteWidget(widget, $event)">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">delete</span>
           </button>
         </div>
       </div>
@@ -285,6 +313,10 @@
           <button class="btn-icon" style="width: 2rem; height: 2rem; border: none;"
             (click)="copyToClipboard(widget); $event.stopPropagation()">
             <span class="material-symbols-outlined" style="font-size: 1rem;">content_copy</span>
+          </button>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none; margin-left: 0.5rem;"
+            (click)="deleteWidget(widget, $event)">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">delete</span>
           </button>
         </div>
       </div>
@@ -346,6 +378,10 @@
             <span class="material-symbols-outlined" style="font-size: 0.875rem;">timer</span>
             {{ widget.timerType }}
           </span>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none; margin-left: 0.5rem;"
+            (click)="deleteWidget(widget, $event)">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">delete</span>
+          </button>
         </div>
       </div>
       } @else {
@@ -370,6 +406,10 @@
             (click)="copyToClipboard(widget); $event.stopPropagation()">
             <span class="material-symbols-outlined" style="font-size: 1rem;">content_copy</span>
           </button>
+          <button class="btn-icon" style="width: 2rem; height: 2rem; border: none; margin-left: 0.5rem;"
+            (click)="deleteWidget(widget, $event)">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">delete</span>
+          </button>
         </div>
       </div>
       }
@@ -387,7 +427,7 @@
 <div class="toast" [class.show]="showToast">
   <div class="toast-dot"></div>
   <div class="toast-text">
-    <span class="label">Copiado</span>
+    <span class="label">{{ toastLabel }}</span>
     <span class="message">{{ toastMessage }}</span>
   </div>
 </div>

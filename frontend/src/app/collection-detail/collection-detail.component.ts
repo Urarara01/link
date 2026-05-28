@@ -19,6 +19,7 @@ export class CollectionDetailComponent implements OnInit {
   newWidgetTimer = 'INDEFINITE';
 
   showToast = false;
+  toastLabel = 'Copiado';
   toastMessage = '';
 
   // Track visibility for KEY widgets
@@ -113,11 +114,33 @@ export class CollectionDetailComponent implements OnInit {
     if (!content) return;
 
     navigator.clipboard.writeText(content).then(() => {
-      this.toastMessage = `"${content.length > 40 ? content.substring(0, 40) + '...' : content}" copiado al portapapeles`;
-      this.showToast = true;
-      setTimeout(() => { this.showToast = false; }, 2500);
+      this.showToastMessage('Copiado', `"${content.length > 40 ? content.substring(0, 40) + '...' : content}" copiado al portapapeles`);
     }).catch(err => {
       console.error('Clipboard copy failed', err);
+    });
+  }
+
+  showToastMessage(label: string, message: string) {
+    this.toastLabel = label;
+    this.toastMessage = message;
+    this.showToast = true;
+    setTimeout(() => { this.showToast = false; }, 2500);
+  }
+
+  deleteWidget(widget: Widget, event?: MouseEvent) {
+    if (event) {
+      event.stopPropagation();
+    }
+    if (!confirm('¿Eliminar este widget?')) {
+      return;
+    }
+
+    this.apiService.deleteWidget(widget.id).subscribe({
+      next: () => {
+        this.widgets = this.widgets.filter(w => w.id !== widget.id);
+        this.showToastMessage('Eliminado', 'Widget eliminado correctamente');
+      },
+      error: (err) => console.error('Failed to delete widget', err)
     });
   }
 
@@ -223,9 +246,7 @@ export class CollectionDetailComponent implements OnInit {
 
     navigator.clipboard.writeText(value).then(() => {
       const fieldLabel = field === 'card' ? 'Tarjeta' : field === 'expiry' ? 'Fecha' : 'CVV';
-      this.toastMessage = `${fieldLabel} copiado al portapapeles`;
-      this.showToast = true;
-      setTimeout(() => { this.showToast = false; }, 2500);
+      this.showToastMessage('Copiado', `${fieldLabel} copiado al portapapeles`);
     }).catch(err => {
       console.error('Clipboard copy failed', err);
     });

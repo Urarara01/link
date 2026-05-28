@@ -51,4 +51,8 @@ export class ApiService {
   createWidget(widget: Partial<Widget>): Observable<Widget> {
     return this.http.post<Widget>(`${this.apiUrl}/widgets`, widget);
   }
+
+  deleteWidget(widgetId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/widgets/${widgetId}`);
+  }
 }
